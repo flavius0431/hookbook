@@ -13,10 +13,8 @@ A **React Hooks Demo Dashboard** showcasing:
 - [Features](#features)
 - [Installation](#installation)
 - [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
 - [Component Overview](#component-overview)
 - [Customization](#customization)
-- [License](#license)
 
 ---
 
@@ -34,7 +32,7 @@ A **React Hooks Demo Dashboard** showcasing:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hookbook.git
+git clone https://github.com/flavius0431/hookbook.git
 cd hookbook
 
 # Install dependencies
@@ -52,26 +50,6 @@ npm run dev
 
 - `npm run dev` – Start the development server.
 - `npm run build` – Create an optimized production build.
-
----
-
-## Project Structure
-
-```
-hookbook/
-├── components/
-│   ├── Clock.jsx
-│   ├── Form.jsx
-│   └── ThemeToggle.jsx
-├── hooks/
-│   └── useForm.js
-├── ThemeContext.jsx
-├── App.jsx
-├── main.jsx
-├── App.css
-├── index.css
-└── package.json
-```
 
 ---
 
@@ -147,7 +125,3 @@ Use `useTheme` hook to access the theme and toggle function.
   ```
 
 ---
-
-## License
-
-This project is open-sourced under the MIT License.
