@@ -1,6 +1,6 @@
 # HookBook
 
-A _React Hooks Demo Dashboard_ showcasing:
+A **React Hooks Demo Dashboard** showcasing:
 
 - A live clock
 - A user form with validation
@@ -16,123 +16,138 @@ A _React Hooks Demo Dashboard_ showcasing:
 - [Project Structure](#project-structure)
 - [Component Overview](#component-overview)
 - [Customization](#customization)
+- [License](#license)
 
 ---
 
 ## Features
 
-- _Clock_: Displays current time updated every second.
-- _Form_: Collects user's name and email with real-time validation.
-- _Theme Toggle_: Switch between Light and Dark mode.
-- _Custom Hooks_: useForm for form state management.
-- _Responsive Design_: Basic styles with smooth theme transitions.
+- **Clock**: Displays current time updated every second.
+- **Form**: Collects user's name and email with real-time validation.
+- **Theme Toggle**: Switch between Light and Dark mode.
+- **Custom Hooks**: `useForm` for form state management.
+- **Responsive Design**: Basic styles with smooth theme transitions.
 
 ---
 
 ## Installation
 
+```bash
 # Clone the repository
-
 git clone https://github.com/yourusername/hookbook.git
 cd hookbook
 
 # Install dependencies
-
 npm install
 
 # Start development server
-
 npm run dev
+```
 
-Make sure you have **Node.js** and **npm** installed on your machine.
+> Make sure you have **Node.js** and **npm** installed on your machine.
 
 ---
 
 ## Available Scripts
 
-- npm run dev – Start the development server.
-- npm run build – Create an optimized production build.
+- `npm run dev` – Start the development server.
+- `npm run build` – Create an optimized production build.
 
 ---
 
 ## Project Structure
 
+```
 hookbook/
 ├── components/
-│ ├── Clock.jsx
-│ ├── Form.jsx
-│ └── ThemeToggle.jsx
+│   ├── Clock.jsx
+│   ├── Form.jsx
+│   └── ThemeToggle.jsx
 ├── hooks/
-│ └── useForm.js
+│   └── useForm.js
 ├── ThemeContext.jsx
 ├── App.jsx
 ├── main.jsx
 ├── App.css
 ├── index.css
 └── package.json
+```
 
 ---
 
 ## Component Overview
 
-### 1. Clock.jsx
+### 1. `Clock.jsx`
 
 Displays a live clock that updates every second.
 
-### 2. Form.jsx
+### 2. `Form.jsx`
 
-Form with validation for name and email. Uses a custom hook useForm.
+Form with validation for `name` and `email`. Uses a custom hook `useForm`.
 
-- _Validation Rules_:
+- **Validation Rules**:
 
   - Name is required.
   - Email must be a valid email address.
 
-### 3. ThemeToggle.jsx
+### 3. `ThemeToggle.jsx`
 
-Button to toggle between Light and Dark themes. Uses context ThemeContext.
+Button to toggle between Light and Dark themes. Uses context `ThemeContext`.
 
-### 4. useForm.js
+### 4. `useForm.js`
 
 Custom hook for form state management:
 
+```jsx
 const { values, handleChange, reset } = useForm({ name: "", email: "" });
+```
 
-### 5. ThemeContext.jsx
+### 5. `ThemeContext.jsx`
 
-Provides global theme state (light or dark) across the app via Context API.
+Provides global theme state (`light` or `dark`) across the app via Context API.
 
+```jsx
 export const ThemeProvider = ({ children }) => {
-const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
 
-const toggleTheme = () => setTheme(prev => prev === "light" ? "dark" : "light");
+  const toggleTheme = () =>
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
-useEffect(() => {
-document.body.className = theme;
-}, [theme]);
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
-return (
-<ThemeContext.Provider value={{ theme, toggleTheme }}>
-{children}
-</ThemeContext.Provider>
-);
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
+```
 
-Use useTheme hook to access the theme and toggle function.
+Use `useTheme` hook to access the theme and toggle function.
 
 ---
 
 ## Customization
 
-- _Styling_: Modify App.css and index.css for global styles.
-- _Form Fields_: Add more fields in Form.jsx and update validation accordingly.
-- _Theme Colors_: Customize theme variables in index.css:
+- **Styling**: Modify `App.css` and `index.css` for global styles.
+- **Form Fields**: Add more fields in `Form.jsx` and update validation accordingly.
+- **Theme Colors**: Customize theme variables in `index.css`:
 
+  ```css
   .light {
-  --bg-color: #ffffff;
-  --text-color: #222222;
+    --bg-color: #ffffff;
+    --text-color: #222222;
   }
   .dark {
-  --bg-color: #1e1e1e;
-  --text-color: #ffffff;
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
   }
+  ```
+
+---
+
+## License
+
+This project is open-sourced under the MIT License.
