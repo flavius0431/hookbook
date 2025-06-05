@@ -1,78 +1,138 @@
-Overview
-The Form component is a simple React form that uses a custom hook useForm for managing form state. It features:
+# HookBook
 
-Controlled inputs for name and email
+A _React Hooks Demo Dashboard_ showcasing:
 
-Basic validation with error feedback
+- A live clock
+- A user form with validation
+- A light/dark theme toggle using React Context
 
-Display of submitted data below the form
+---
 
-Reset form on successful submission
+## Table of Contents
 
-Import and use inside your app:
-import Form from './components/Form';
+- [Features](#features)
+- [Installation](#installation)
+- [Available Scripts](#available-scripts)
+- [Project Structure](#project-structure)
+- [Component Overview](#component-overview)
+- [Customization](#customization)
 
-function App() {
+---
+
+## Features
+
+- _Clock_: Displays current time updated every second.
+- _Form_: Collects user's name and email with real-time validation.
+- _Theme Toggle_: Switch between Light and Dark mode.
+- _Custom Hooks_: useForm for form state management.
+- _Responsive Design_: Basic styles with smooth theme transitions.
+
+---
+
+## Installation
+
+# Clone the repository
+
+git clone https://github.com/yourusername/hookbook.git
+cd hookbook
+
+# Install dependencies
+
+npm install
+
+# Start development server
+
+npm run dev
+
+Make sure you have **Node.js** and **npm** installed on your machine.
+
+---
+
+## Available Scripts
+
+- npm run dev – Start the development server.
+- npm run build – Create an optimized production build.
+
+---
+
+## Project Structure
+
+hookbook/
+├── components/
+│ ├── Clock.jsx
+│ ├── Form.jsx
+│ └── ThemeToggle.jsx
+├── hooks/
+│ └── useForm.js
+├── ThemeContext.jsx
+├── App.jsx
+├── main.jsx
+├── App.css
+├── index.css
+└── package.json
+
+---
+
+## Component Overview
+
+### 1. Clock.jsx
+
+Displays a live clock that updates every second.
+
+### 2. Form.jsx
+
+Form with validation for name and email. Uses a custom hook useForm.
+
+- _Validation Rules_:
+
+  - Name is required.
+  - Email must be a valid email address.
+
+### 3. ThemeToggle.jsx
+
+Button to toggle between Light and Dark themes. Uses context ThemeContext.
+
+### 4. useForm.js
+
+Custom hook for form state management:
+
+const { values, handleChange, reset } = useForm({ name: "", email: "" });
+
+### 5. ThemeContext.jsx
+
+Provides global theme state (light or dark) across the app via Context API.
+
+export const ThemeProvider = ({ children }) => {
+const [theme, setTheme] = useState("light");
+
+const toggleTheme = () => setTheme(prev => prev === "light" ? "dark" : "light");
+
+useEffect(() => {
+document.body.className = theme;
+}, [theme]);
+
 return (
-
-<div>
-<Form />
-</div>
+<ThemeContext.Provider value={{ theme, toggleTheme }}>
+{children}
+</ThemeContext.Provider>
 );
-}
+};
 
-Form Behavior
-State Management
-Uses a custom hook useForm to track values and handle changes.
+Use useTheme hook to access the theme and toggle function.
 
-Tracks validation errors with a local errors state.
+---
 
-Stores submitted data in submittedData state for display.
+## Customization
 
-Validation Rules
-Name: Required, must not be empty or whitespace.
+- _Styling_: Modify App.css and index.css for global styles.
+- _Form Fields_: Add more fields in Form.jsx and update validation accordingly.
+- _Theme Colors_: Customize theme variables in index.css:
 
-Email: Required, must be a valid email format (simple regex check).
-
-Submission
-On submit:
-
-Validates inputs.
-
-If errors exist, shows error messages and prevents submission.
-
-If valid, clears the form and displays the submitted data below.
-
-Key Functions
-validateEmail(email: string): boolean
-Simple regex check to verify email format.
-
-validate(): boolean
-Checks for empty fields and invalid email.
-
-Updates errors state.
-
-Returns true if form is valid, else false.
-
-handleSubmit(event: Event)
-Prevents default form submission.
-
-Calls validate().
-
-If valid, saves form data and resets inputs.
-
-Styling
-Inputs with errors have red borders.
-
-Error messages appear below respective inputs in red.
-
-Submitted data is displayed in a simple block below the form.
-
-Extensibility Ideas
-Add props to customize fields or submit behavior.
-
-Integrate with APIs for async form submission.
-
-Add loading state and disable button while submitting.
-
-Support more fields and complex validation rules.
+  .light {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  }
+  .dark {
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+  }
